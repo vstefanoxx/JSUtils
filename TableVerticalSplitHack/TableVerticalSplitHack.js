@@ -16,7 +16,9 @@
 * vertical header must have td elements with the same class name as specified by the variable
 * "verticalTableSplit_leftHeaderClassName"
 *
-* See http://jsfiddle.net/mU2Ne/ for an example
+* Live demo: http://jsfiddle.net/mU2Ne/
+* Gist: https://gist.github.com/vstefanoxx/170e90c16f176975f5f6
+* GitHub: https://github.com/vstefanoxx/JSUtils/blob/master/TableVerticalSplitHack/TableVerticalSplitHack.js
 *
 * Dependencies: jQuery.
 *

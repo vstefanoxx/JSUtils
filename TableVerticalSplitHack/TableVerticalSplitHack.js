@@ -31,8 +31,8 @@
 
 /**
  * pdfPage, verticalTableSplit_ClassName, verticalTableSplit_leftHeaderClassName
- * You can overwrite these parameters in the page from where you are loading this script
- * (and after the point where you loaded it) so you can set pdfPage in one place and use,
+ * You can overwrite these parameters in the page where you are loading this script
+ * (after you loaded it) so you can set pdfPage in one place and use,
  * if you need it, both this script and the one that split horizontally the table
  * (wkhtmltopdf.tablesplit.js on GitHub or his forks, see the disclaimer on top)
  */

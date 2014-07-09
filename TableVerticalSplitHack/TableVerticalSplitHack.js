@@ -16,13 +16,11 @@
 * vertical header must have td elements with the same class name as specified by the variable
 * "verticalTableSplit_leftHeaderClassName"
 *
-* Live demo: http://jsfiddle.net/mU2Ne/
-* Gist: https://gist.github.com/vstefanoxx/170e90c16f176975f5f6
-* GitHub: https://github.com/vstefanoxx/JSUtils/blob/master/TableVerticalSplitHack/TableVerticalSplitHack.js
+* See http://jsfiddle.net/mU2Ne/ for an example
 *
 * Dependencies: jQuery.
 *
-* From original script (and some others forks) I took some variable name and, as I said,
+* From original script (and some others forks and hacks) I took some variable name and, as I said,
 * the original idea
 *
 * @author Stefano Vargiu <vstefanoxx@gmail.com>
@@ -31,8 +29,8 @@
 
 /**
  * pdfPage, verticalTableSplit_ClassName, verticalTableSplit_leftHeaderClassName
- * You can overwrite these parameters in the page where you are loading this script
- * (after you loaded it) so you can set pdfPage in one place and use,
+ * You can overwrite these parameters in the page from where you are loading this script
+ * (and after the point where you loaded it) so you can set pdfPage in one place and use,
  * if you need it, both this script and the one that split horizontally the table
  * (wkhtmltopdf.tablesplit.js on GitHub or his forks, see the disclaimer on top)
  */
@@ -126,7 +124,8 @@ $(window).load(function () {
 	// If header slices are adjacent, it join them 
 	function getHeaderSliceHTML($row, first_range, second_range) {
 		var ranges = [];
-		var last_idx_first_range = (first_range.is_same_idx ? first_range.start_idx : first_range.end_idx);
+		if (first_range != undefined)
+			var last_idx_first_range = (first_range.is_same_idx ? first_range.start_idx : first_range.end_idx);
 		// if ranges are adjacent, join them
 		if (last_idx_first_range == second_range.start_idx) {
 			// modify first range to include second range, and add only that single range
@@ -143,6 +142,8 @@ $(window).load(function () {
 				first_range.start_diff_colspan += second_range.start_diff_colspan - first_range.colspan;
 			ranges.push(first_range);
 		// ranges are NOT adjacent, add both of them
+		} else if (first_range == undefined) {
+			ranges.push(second_range);
 		} else {
 			ranges.push(first_range);
 			ranges.push(second_range);
@@ -165,11 +166,13 @@ $(window).load(function () {
 	// setHeader
 	// set the header and footer of $target_table according to vertical left header and data columns specified (through column indeces)
 	function setHeader($header_rows, $footer_rows, $target_table, from_idx, to_idx, leftHeader_last_idx) {
-		var $row, $header_slice, leftHeader_header_range, data_header_range, row_type;
+		var $row, $header_slice, data_header_range, row_type;
+		var leftHeader_header_range = undefined;
 		$.each([ $header_rows, $footer_rows ], function(idx, $rows) {
 			$rows.each(function() {
 				$row = $(this);
-				leftHeader_header_range = getHeaderRange($row, 0, leftHeader_last_idx);
+				if (leftHeader_last_idx != undefined)
+					leftHeader_header_range = getHeaderRange($row, 0, leftHeader_last_idx);
 				data_header_range = getHeaderRange($row, from_idx, to_idx);
 				row_type = (idx == 0 ? 'thead' : 'tfoot');
 				$target_table.find('> ' + row_type + ' > tr:eq('+$row.index()+')')
@@ -227,9 +230,17 @@ $(window).load(function () {
 		
 		// info abount vertical left header (if present)
 		var $leftHeader_last_col = $first_row.find('> td.' + verticalTableSplit_leftHeaderClassName + ':last')
-		var leftHeader_last_idx = $leftHeader_last_col.index()
-		var leftHeader_right_x = $leftHeader_last_col.offset().left + $leftHeader_last_col.outerWidth();
-		var last_idx = leftHeader_last_idx + 1;
+		// is left vertical header present?
+		if ($leftHeader_last_col.size() > 0) {
+			var leftHeader_last_idx = $leftHeader_last_col.index();
+			var leftHeader_right_x = $leftHeader_last_col.offset().left + $leftHeader_last_col.outerWidth();
+			var last_idx = leftHeader_last_idx + 1;
+		// left vertical header is not present
+		} else {
+			var leftHeader_last_idx = undefined;
+			var leftHeader_right_x = 0;
+			var last_idx = 0;
+		}
 			// for every column, check if it fits inside the page width
 		$first_row_cols.slice(last_idx).each(function() {
 			var $td = $(this);

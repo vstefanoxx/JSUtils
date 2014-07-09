@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style type="text/css">
+		table {
+			border-collapse:collapse;
+			border: 1px solid black;
+		}
+		table td, table th {
+			padding: 8px;
+			border: 1px solid black;
+		}
+	</style>
+
+<script src="TableVerticalSplitHack.js" ></script>
+<script charset="utf-8" type="text/javascript">
+	// PDF page settings
+	// all numbers are in inches
+	var pdfPage = {
+		width: 11.7,
+		height: 8.3,
+		margins: {
+			top: 2/25.4,
+			left: 2/25.4,
+			right: 2/25.4,
+			bottom: 26/25.4
+		}
+	};
+	// class name of the tables to automatically split: if not specified, split all tables
+	//var verticalTableSplit_ClassName = 'splitForPrint';
+	var verticalTableSplit_ClassName = '';
+	// class name to specify which columns are part of the vertical left header
+	var verticalTableSplit_leftHeaderClassName = 'leftHeader';
+</script>
+
+</head>
+	
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Head1</th>
+				<th colspan="10">Head2</th>
+				<th colspan="10">Head3</th>
+				<th colspan="11">Head4</th>
+				<th colspan="15">Head5</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td>Foot1</th>
+				<td colspan="10">Foot2</th>
+				<td colspan="10">Foot3</th>
+				<td colspan="11">Foot4</th>
+				<td colspan="15">Foot5</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td class="leftHeader">CHead1.1</td>
+				<td class="leftHeader">CHead2.1</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="leftHeader">CHead1.2</td>
+				<td class="leftHeader">CHead2.2</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="leftHeader">CHead1.3</td>
+				<td class="leftHeader">CHead2.3</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="leftHeader">CHead1.4</td>
+				<td class="leftHeader">CHead2.4</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="leftHeader">CHead1.5</td>
+				<td class="leftHeader">CHead2.5</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+			<tr>
+				<td class="leftHeader">CHead1.6</td>
+				<td class="leftHeader">CHead2.61</td>
+				<td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah-5</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blah</td><td>blahx</td><td>blah1</td><td>blah2</td><td>blah3</td><td>blah4</td><td>blah5</td><td>blah6xxxxxxx</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

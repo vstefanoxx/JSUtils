@@ -22,7 +22,7 @@
 *
 * Dependencies: jQuery.
 *
-* From original script (and some others forks and hacks) I took some variable name and, as I said,
+* From original script (and some others forks) I took some variable name and, as I said,
 * the original idea
 *
 * @author Stefano Vargiu <vstefanoxx@gmail.com>
